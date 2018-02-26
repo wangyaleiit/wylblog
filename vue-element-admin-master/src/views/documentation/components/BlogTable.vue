@@ -17,13 +17,13 @@
     <el-table-column
       label="标题"  width="350" align="left">
         <template slot-scope="scope">
-        	<span style="color: #409eff;cursor: pointer;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+        	<span style="color: #409eff;cursor: pointer;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;" @click="itemClick(scope.row)">
         	{{ scope.row.title}}</span>
         </template>
     </el-table-column>
     <el-table-column
       prop="topicName"
-      min-width="300"
+      min-width="200"
       label="所属分类">
     </el-table-column>
     <el-table-column
@@ -45,6 +45,41 @@
   <el-button type="danger"  style="margin-top: 10px;width: 110px;" 
         @click="handleDeleteAll" icon="el-icon-minus" :disabled="this.selItems.length==0" v-if="this.tableData.length>0">批量删除
   </el-button>
+
+  <el-dialog
+    title="预览"
+    :visible.sync="dialogVisible"
+    width="50%">
+    <el-row>
+      <el-col :span="24">
+        <div>
+          <div style="text-align: center"><h3 style="margin-top: 0px;margin-bottom: 0px;">{{article.title}}</h3></div>
+          <div style="width: 100%;margin-top: 5px;display: flex;justify-content: flex-end;align-items: center">
+            <div style="display: inline; color: #20a0ff;margin-left: 50px;margin-right:20px;font-size: 12px;">
+              Wyl
+            </div>
+            <span style="color: #20a0ff;margin-right:20px;font-size: 12px;">浏览 {{article.pageView==null?0:article.pageView}}</span>
+            <span style="color: #20a0ff;margin-right:20px;font-size: 12px;"> {{article.updateDate}}</span>
+           <!-- <el-tag type="success" v-for="item in article.tag.split(',')" :key="item" size="small"
+                    style="margin-left: 8px">{{ item }}
+            </el-tag> -->
+            <span style="margin:0px 50px 0px 0px"></span>
+          </div>
+        </div>
+      </el-col>
+      <el-col>
+      <div style="text-align: left" v-html="article.mdcontent">
+        </div>
+      </el-col>
+    </el-row>
+
+
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+    </span>
+  </el-dialog>
+
 </div>
 </template>
 
@@ -59,8 +94,10 @@
     },
     data() {
       return {
-        selItems: [],
         loading: false,
+        dialogVisible: false,
+        selItems: [],
+        article: {},
         tableData: []
       }
     },
@@ -110,6 +147,19 @@
             message: '已取消删除'
           })
         })
+      },
+      itemClick(row){
+        this.loading = true;
+        getRequest("/article/queryByKey/" + row.id).then(resp=> {
+          if (resp.data.success) {
+            this.article = resp.data.result
+          }
+          this.loading = false
+        }, resp=> {
+          this.loading = false
+          this.$message({type: 'error', message: '页面加载失败!'});
+        })
+        this.dialogVisible = true
       },
       loadBlogs(page, count) {
         var url = '/article/queryByMap' + '?pageNumber=' + page + '&flag=' + this.type
