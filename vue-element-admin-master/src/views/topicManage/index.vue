@@ -23,7 +23,7 @@
 					  </el-table-column>
 						<el-table-column
 							label="栏目名称"
-							min-width="300px" align="left">
+							min-width="200px" align="left">
 								<template slot-scope="scope">
 									<template v-if="scope.row.edit">
 										<el-input class="edit-input" size="small" v-model="scope.row.topicName"></el-input>
