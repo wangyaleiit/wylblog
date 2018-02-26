@@ -18,6 +18,7 @@
 <script>
 import tabPane from './components/BlogTable'
 import blogCfg from './components/BlogCfg'
+
 export default {
   data() {
     return {
