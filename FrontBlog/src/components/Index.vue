@@ -94,23 +94,23 @@
 	  					<ul class="mdui-list" style="padding-top: 0px;">
 	  						<li class="mdui-list-item" style="min-height: 30px;height: 30px;">
 							    <i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;
-							    <div class="mdui-list-item-content plt">GitHub</div>
+							    <div class="mdui-list-item-content plt"><a href="https://github.com/" target="_blank">GitHub</a></div>
 							</li>
 							<li class="mdui-list-item" style="min-height: 30px;height: 30px;">
 							    <i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;
-							    <div class="mdui-list-item-content plt">码云</div>
+							    <div class="mdui-list-item-content plt"><a href="https://gitee.com/" target="_blank">码云</a></div>
 							</li>
 							<li class="mdui-list-item" style="min-height: 30px;height: 30px;">
 							    <i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;
-							    <div class="mdui-list-item-content plt">简书</div>
+							    <div class="mdui-list-item-content plt"><a href="https://www.jianshu.com/" target="_blank">简书</a></div>
 							</li>
 							<li class="mdui-list-item" style="min-height: 30px;height: 30px;">
 							    <i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;
-							    <div class="mdui-list-item-content plt">知乎</div>
+							    <div class="mdui-list-item-content plt"><a href="https://www.zhihu.com/signup?next=%2F" target="_blank">知乎</a></div>
 							</li>
 							<li class="mdui-list-item" style="min-height: 30px;height: 30px;">
 							    <i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;
-							    <div class="mdui-list-item-content plt">开源中国</div>
+							    <div class="mdui-list-item-content plt"><a href="http://www.oschina.net/" target="_blank">开源中国</a></div>
 							</li>
 						</ul>
 			   		</div>
