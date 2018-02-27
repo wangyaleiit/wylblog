@@ -47,8 +47,7 @@
   <el-dialog
   title="预览"
   :visible.sync="dialogVisible"
-  width="50%"
-  :before-close="handleClose">
+  width="50%">
   <el-row>
         <el-col :span="24">
       <div>
@@ -67,7 +66,13 @@
       </div>
     </el-col>
     <el-col>
-        <div>{{article.htmlcontent}}</div>
+          <div style="text-align: left" v-html="article.htmlcontent" v-highlight></div>
+
+             <!-- <div style="text-align: left" v-html="compiledMarkdown"></div>  -->
+        <!-- <div style="text-align: left">
+          <mavon-editor style="height: 100%;width: 100%;" ref=md @imgAdd="imgAdd" code_style="dracula"
+                @imgDel="imgDel" v-model="article.mdcontent" subfield="false" default_open=""></mavon-editor>
+        </div> -->
     </el-col>
   </el-row>
 
@@ -81,6 +86,28 @@
 
 <script>
   import { putRequest, deleteRequest, getRequest } from '@/api/fetch'
+  // import 'highlight.js/styles/dracula.css' // 样式文件
+  // import Marked from 'marked'
+  // import hljs from 'highlight.js'
+  // Marked.setOptions({
+  //   renderer: new Marked.Renderer(),
+  //   gfm: true,
+  //   tables: true,
+  //   breaks: false,
+  //   pedantic: false,
+  //   sanitize: false,
+  //   smartLists: true,
+  //   smartypants: false,
+  //   highlight: function(code, lang) {
+  //     if (lang && hljs.getLanguage(lang)) {
+  //       return hljs.highlight(lang, code, true).value
+  //       // return hljs.highlightAuto(code).value
+  //     } else {
+  //       return hljs.highlightAuto(code).value
+  //     }
+  //   }
+  // })
+
   export default {
     props: {
       type: {
@@ -97,9 +124,15 @@
         dialogVisible: false
       }
     },
+    // components: { Marked, hljs },
     created() {
       this.loadBlogs(1, 2)
     },
+    // computed: {
+    //   compiledMarkdown: function() {
+    //     return Marked(this.article.mdcontent || '', { sanitize: true })
+    //   }
+    // },
     methods: {
       handleEdit(row) {
         this.$router.push({ path: '/documentation/publishArticle', query: { from: this.type, id: row.id }})
@@ -175,4 +208,44 @@
 </script>
 
 <style>
+blockquote{
+  display:block;
+  background: #fff;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+ 
+  /*字体*/
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #666;
+  text-align: justify;
+  
+  /*边框 - (选项)*/
+  border-left: 15px solid #c76c0c;
+  border-right: 2px solid #c76c0c;
+ 
+  /*盒子阴影 - (选项)*/
+  -moz-box-shadow: 2px 2px 15px #ccc;
+  -webkit-box-shadow: 2px 2px 15px #ccc;
+  box-shadow: 2px 2px 15px #ccc;
+}
+blockquote::before{
+  content: "\201C"; /*左双引号的Unicode编码*/
+ 
+  /*字体*/
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #999;
+ 
+  /*位置*/
+  position: absolute;
+  left: 10px;
+  top:5px;
+}
+blockquote::after{
+  content: ""; /*如果要显示右双引号，则写 content: "\201D"; */
+}
 </style>
