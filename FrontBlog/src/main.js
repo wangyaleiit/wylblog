@@ -7,8 +7,17 @@ import mdui from 'mdui'
 import 'mdui/dist/css/mdui.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/dracula.css' // 样式文件
 Vue.use(ElementUI)
 Vue.config.productionTip = false
+
+Vue.directive('highlight', function(el) {
+  const blocks = el.querySelectorAll('pre code')
+  blocks.forEach((block) => {
+    hljs.highlightBlock(block)
+  })
+})
 
 new Vue({
   el: '#app',
