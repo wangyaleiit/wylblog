@@ -1,6 +1,6 @@
 <template>
 	<div>
-	<div class="mdui-list" style="padding: 0px;" v-loading="loading">
+	<div class="mdui-list" style="padding: 0px;">
 		<router-link  v-for="art in articleList" :key="art.id"  :to="'/info/'+ art.id">
 			<div class="mdui-card mdui-ripple" style="margin-top: 2%;">
 			    <div class="mdui-card-primary">
@@ -22,14 +22,15 @@
 			</div>
 		</router-link>
 	</div>
-		<div class="pagination-footer" style="margin-top: 5px;">
-		  <el-pagination
+		<div class="pagination-footer" style="margin-top: 10px;text-align:center">
+		  <!-- <el-pagination
 		  	background
 		  	class="center"
 		    layout="prev, pager, next"
 				:page-size="pageSize"
 		    :total="totalCount" @current-change="currentChange">
-		  </el-pagination>
+		  </el-pagination> -->
+			 <Page :total="totalCount" :page-size="pageSize" @on-change="currentChange"></Page>
 	    </div>
 	</div>
 </template>
@@ -54,7 +55,8 @@ export default {
       //翻页
       currentChange(currentPage){
         this.currentPage = currentPage;
-        this.loading = true
+				this.loading = true
+				this.$Loading.start()
         this.loadBlogs(currentPage,'')
 			},
 			loadBlogs(currentPage,topic){
@@ -62,8 +64,8 @@ export default {
 						if (resp.data.success) {
 							this.articleList = resp.data.result.rows
 							this.totalCount = resp.data.result.total
-							console.log(this.totalCount)
 							this.loading = false
+							this.$Loading.finish()
 						}
 				})
 			}

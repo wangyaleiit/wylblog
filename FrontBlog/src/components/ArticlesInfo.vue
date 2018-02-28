@@ -1,5 +1,5 @@
 <template>
-	<div class="mdui-list" style="padding: 0px;" v-loading="loading">
+	<div class="mdui-list" style="padding: 0px;">
 		<div class="mdui-card mdui-ripple" style="margin-top: 2%;margin-bottom:12px;">
 		    <div class="mdui-card-primary">
 			    <div class="mdui-card-primary-title">{{art.title}}</div>
@@ -54,12 +54,14 @@ export default {
 	 },
 	 loadData(id){
 		loading:true 
+		this.$Loading.start()
 		getRequest('/front/queryByKey/'+ id).then(resp=>{
 			if (resp.data.success) {
 				this.art = resp.data.result.art
 			    this.preArt = resp.data.result.preArt
 				this.nextArt = resp.data.result.nextArt
 				this.loading = false
+				this.$Loading.finish()
 			}
 		})
 	 }
