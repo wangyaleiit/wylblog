@@ -25,10 +25,10 @@ export default new Router({
 			{
 				path: '/info/:id',
 				component: ArticlesInfo
-			}
+			},{ path: '/timeline',component:TimeLine }
 		]
 	},
-	{ path: '/timeline',component:TimeLine },
+
 	{ path: '/404',component:NotFoundPage, hidden: true },
 	{ path: '*', redirect: '/404', hidden: true }
 	]

@@ -48,7 +48,7 @@ export default {
 		}
 	},
   created(){
-		let topic = this.$route.params.topicId === undefined ? '' : this.$route.params.topicId;
+		let topic = this.$route.query.topicId === undefined ? '' : this.$route.query.topicId;
 		this.loadBlogs(1,topic)
   },
   methods:{

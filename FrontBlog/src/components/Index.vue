@@ -4,10 +4,10 @@
 			<div class="mdui-toolbar" >
 				<img class="mdui-card-header-avatar" src="../assets/img/100.jpg" style="margin-right: 0;"/>
 				<a href="./" class="mdui-typo-title " style="margin-left: 5px;">程序猿wyl</a>
-				<a href="" style="margin-left: 50px;" class="mst mdui-hidden-xs">知识星球</a>
-				<a href="" class="mst mdui-hidden-xs">推荐书单</a>
-				<a href="" class="mst mdui-hidden-xs">开源书籍</a>
-				<a href="" class="mst mdui-hidden-xs">归档</a>
+				<a href="./" style="margin-left: 50px;" class="mst mdui-hidden-xs">知识星球</a>
+				<!-- <a href="" class="mst mdui-hidden-xs">推荐书单</a> -->
+				<!-- <a href="" class="mst mdui-hidden-xs">开源书籍</a> -->
+				<a href="/timeline" class="mst mdui-hidden-xs">归档</a>
 				<a href="" class="mst mdui-hidden-xs">关于</a>
 				<div class="mdui-toolbar-spacer mdui-hidden-xs"></div>
 				<div>
@@ -133,14 +133,8 @@
 			   		</div>
 			   		<div class="mdui-col-xs-4 mdui-col-md-3" style="margin-top: 30px;padding-right:100px; ">
 			   			<h3 style="padding-left:10px ;">友情链接</h3>
-	  						<span class="mdui-chip-title">Spring Cloud中文网</span>
-						    <span class="mdui-chip-title">Spring For All社区</span>
-    						<span class="mdui-chip-title">周里|Spring Cloud</span>
-							<span class="mdui-chip-title">Example Chip</span>
-							<span class="mdui-chip-title">Example Chip</span>
-							<span class="mdui-chip-title">Example Chip</span>
-							<span class="mdui-chip-title">Example Chip</span>
-							<span class="mdui-chip-title">Example Chip</span>
+	  						<span class="mdui-chip-title"><i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;<a href="https://springcloud.cc/" target="_blank">Spring Cloud中文网</a></span>
+						    <span class="mdui-chip-title"><i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;<a href="http://www.spring4all.com/" target="_blank">Spring For All社区</a></span>
 			   		</div>
 			   		<div class="mdui-col-xs-12 mdui-col-md-3" style="margin-top: 30px;">
 			   			<h3 style="padding-left:18px ;">我的公众号</h3>
@@ -179,7 +173,7 @@ export default {
 		})
 	},
 	showArt(id){
-		this.$router.replace({path: '/' + id})
+		this.$router.push({path: '/', query: {topicId : id}})
 		location.reload()
 	}
 	  
