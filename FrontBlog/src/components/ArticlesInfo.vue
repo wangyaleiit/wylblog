@@ -24,7 +24,7 @@
 			</button>&emsp;{{preArt.title}}
 		</div>
 		<div class="mdui-float-right" v-if="nextArt !== null">
-			{{nextArt.title}} &emsp;<button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme mdui-ripple" @click="nextHand(nextArt.id)">
+			{{nextArt.title}} &emsp;<button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-light-blue-a700N mdui-ripple" @click="nextHand(nextArt.id)">
 				<i class="mdui-icon material-icons">&#xe409;</i>
 			</button>
 		</div>
@@ -43,6 +43,7 @@ export default {
 		}
 	},
   created(){
+	 this.$Loading.start()
 	 this.loadData(this.$route.params.id)
   },
   methods:{
@@ -53,14 +54,11 @@ export default {
 		this.loadData(id)
 	 },
 	 loadData(id){
-		loading:true 
-		this.$Loading.start()
 		getRequest('/front/queryByKey/'+ id).then(resp=>{
 			if (resp.data.success) {
 				this.art = resp.data.result.art
 			    this.preArt = resp.data.result.preArt
 				this.nextArt = resp.data.result.nextArt
-				this.loading = false
 				this.$Loading.finish()
 			}
 		})

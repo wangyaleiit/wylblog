@@ -48,6 +48,7 @@ export default {
 		}
 	},
   created(){
+		this.$Loading.start()
 		let topic = this.$route.query.topicId === undefined ? '' : this.$route.query.topicId;
 		this.loadBlogs(1,topic)
   },
@@ -55,7 +56,6 @@ export default {
       //翻页
       currentChange(currentPage){
         this.currentPage = currentPage;
-				this.loading = true
 				this.$Loading.start()
         this.loadBlogs(currentPage,'')
 			},
@@ -64,7 +64,6 @@ export default {
 						if (resp.data.success) {
 							this.articleList = resp.data.result.rows
 							this.totalCount = resp.data.result.total
-							this.loading = false
 							this.$Loading.finish()
 						}
 				})

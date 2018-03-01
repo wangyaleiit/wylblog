@@ -35,13 +35,14 @@ export default {
         }
 	},
    created(){
+       	this.$Loading.start()
 		this.loadBlogs(1)
    },
   methods:{
       //翻页
       currentChange(currentPage){
+          this.$Loading.start()
           this.currentPage = currentPage;
-		  this.$Loading.start()
           this.loadBlogs(currentPage)
 		},
         loadBlogs(currentPage){

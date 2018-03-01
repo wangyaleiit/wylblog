@@ -4,11 +4,11 @@
 			<div class="mdui-toolbar" >
 				<img class="mdui-card-header-avatar" src="../assets/img/100.jpg" style="margin-right: 0;"/>
 				<a href="./" class="mdui-typo-title " style="margin-left: 5px;">程序猿wyl</a>
-				<a href="./" style="margin-left: 50px;" class="mst mdui-hidden-xs">知识星球</a>
-				<!-- <a href="" class="mst mdui-hidden-xs">推荐书单</a> -->
-				<!-- <a href="" class="mst mdui-hidden-xs">开源书籍</a> -->
-				<a href="/timeline" class="mst mdui-hidden-xs">归档</a>
-				<a href="" class="mst mdui-hidden-xs">关于</a>
+				<a href="./" style="margin-left: 50px;font-size: 16px;color: #495060" class="mst mdui-hidden-xs fontSize-14">知识星球</a>
+				<!-- <a href="" class="mst mdui-hidden-xs">推荐书单</a>
+				<a href="" class="mst mdui-hidden-xs">开源书籍</a> -->
+				<a href="/timeline" style="font-size: 16px;color: #495060" class="mst mdui-hidden-xs fontSize-14">归档</a>
+				<a href="" style="font-size:16px;color: #495060" class="mst mdui-hidden-xs fontSize-14">关于</a>
 				<div class="mdui-toolbar-spacer mdui-hidden-xs"></div>
 				<div>
 					<div class="mdui-textfield mdui-textfield-expandable mdui-float-right mdui-hidden-xs">
@@ -133,8 +133,23 @@
 			   		</div>
 			   		<div class="mdui-col-xs-4 mdui-col-md-3" style="margin-top: 30px;padding-right:100px; ">
 			   			<h3 style="padding-left:10px ;">友情链接</h3>
-	  						<span class="mdui-chip-title"><i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;<a href="https://springcloud.cc/" target="_blank">Spring Cloud中文网</a></span>
-						    <span class="mdui-chip-title"><i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;<a href="http://www.spring4all.com/" target="_blank">Spring For All社区</a></span>
+	  						<!-- <span class="mdui-chip-title"><i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;<a href="" target="_blank">Spring Cloud中文网</a></span>
+						    <span class="mdui-chip-title"><i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;<a href="" target="_blank">Spring For All社区</a></span>
+							 -->
+							<ul class="mdui-list" style="padding-top: 0px;">
+	  						<li class="mdui-list-item" style="min-height: 30px;height: 30px;">
+							    <i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;
+							    <div class="mdui-list-item-content plt"><a href="https://springcloud.cc/" target="_blank">Spring Cloud中文网</a></div>
+							</li>
+							<li class="mdui-list-item" style="min-height: 30px;height: 30px;">
+							    <i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;
+							    <div class="mdui-list-item-content plt"><a href="http://www.spring4all.com/" target="_blank">Spring For All社区</a></div>
+							</li>
+							<li class="mdui-list-item" style="min-height: 30px;height: 30px;">
+							    <i class="mdui-icon material-icons" style="font-size: smaller;color: #BBBBBB;">&#xe037;</i>&nbsp;
+							    <div class="mdui-list-item-content plt"><a href="https://cn.vuejs.org/" target="_blank">VUE</a></div>
+							</li>
+						</ul>
 			   		</div>
 			   		<div class="mdui-col-xs-12 mdui-col-md-3" style="margin-top: 30px;">
 			   			<h3 style="padding-left:18px ;">我的公众号</h3>
