@@ -23,12 +23,12 @@
     </el-table-column>
     <el-table-column
       prop="topicName"
-      min-width="300"
+      min-width="200"
       label="所属分类">
     </el-table-column>
     <el-table-column
       prop="updateDate"
-      min-width="130"
+      min-width="150"
       label="最近编辑时间">
     </el-table-column>
     <el-table-column
@@ -41,9 +41,24 @@
       </template>
     </el-table-column>
   </el-table>
-  <el-button type="danger"  style="margin-top: 10px;width: 110px;" 
-        @click="handleDeleteAll" icon="el-icon-minus" :disabled="this.selItems.length==0" v-if="this.tableData.length>0">批量删除
-  </el-button>
+<el-row :gutter="20">
+  <el-col :span="10">
+    <el-button type="danger"  style="margin-top: 10px;width: 110px;" 
+          @click="handleDeleteAll" icon="el-icon-minus" :disabled="this.selItems.length==0" v-if="this.tableData.length>0">批量删除
+    </el-button>
+  </el-col>
+  <el-col :span="10" style="text-align: right;">
+      <el-pagination
+        style="margin-top: 10px;" 
+        background
+        layout="prev, pager, next"
+        :page-size="pageSize"
+        @current-change="currentChange"
+        :total="total">
+      </el-pagination>
+  </el-col>
+</el-row>
+
   <el-dialog
   title="预览"
   :visible.sync="dialogVisible"
@@ -118,6 +133,9 @@
     data() {
       return {
         selItems: [],
+        total:-1,
+        currentPage: 1,
+        pageSize: 10,
         loading: false,
         tableData: [],
         article: {},
@@ -191,11 +209,17 @@
         this.dialogVisible = true
         // this.$router.push({ path: '/documentation/blogDetail', query: { aid: row.id }})
       },
+      currentChange(currentPage){
+        this.currentPage = currentPage;
+        this.loading = true;
+        this.loadBlogs(currentPage, this.pageSize);
+      },
       loadBlogs(page, count) {
         var url = '/article/queryByMap' + '?pageNumber=' + page + '&flag=' + this.type
         getRequest(url).then(resp => {
           if (resp.data.success) {
             this.tableData = resp.data.result.rows
+            this.total = resp.data.result.total
             this.loading = false
           }
         }).catch(resp => {
