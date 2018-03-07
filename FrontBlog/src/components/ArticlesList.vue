@@ -1,7 +1,7 @@
 <template>
 	<div>
 	<div class="mdui-list" style="padding: 0px;">
-		<router-link  v-for="art in articleList" :key="art.id"  :to="'/info/'+ art.id">
+		<router-link  v-for="art in articleList" :key="art.id"  :to="'/detail/'+ art.id">
 			<div class="mdui-card mdui-ripple" style="margin-top: 2%;">
 			    <div class="mdui-card-primary">
 				    <div class="mdui-card-primary-title">{{art.title}}</div>
@@ -30,7 +30,7 @@
 				:page-size="pageSize"
 		    :total="totalCount" @current-change="currentChange">
 		  </el-pagination> -->
-			 <Page :total="totalCount" :page-size="pageSize" @on-change="currentChange"></Page>
+			 <Page :total="totalCount" :page-size="pageSize" @on-change="currentChange" v-if="articleList.length > 0"></Page>
 	    </div>
 	</div>
 </template>
