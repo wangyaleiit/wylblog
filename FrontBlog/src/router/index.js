@@ -23,7 +23,7 @@ export default new Router({
 			// 	component: ArticlesList
 			// },
 			{
-				path: '/info/:id',
+				path: '/detail/:id',
 				component: ArticlesInfo
 			},{ path: '/timeline',component:TimeLine }
 		]
