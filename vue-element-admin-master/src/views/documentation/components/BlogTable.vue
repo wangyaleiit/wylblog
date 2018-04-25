@@ -133,7 +133,7 @@
     data() {
       return {
         selItems: [],
-        total:-1,
+        total: -1,
         currentPage: 1,
         pageSize: 10,
         loading: false,
@@ -209,10 +209,10 @@
         this.dialogVisible = true
         // this.$router.push({ path: '/documentation/blogDetail', query: { aid: row.id }})
       },
-      currentChange(currentPage){
-        this.currentPage = currentPage;
-        this.loading = true;
-        this.loadBlogs(currentPage, this.pageSize);
+      currentChange(currentPage) {
+        this.currentPage = currentPage
+        this.loading = true
+        this.loadBlogs(currentPage, this.pageSize)
       },
       loadBlogs(page, count) {
         var url = '/article/queryByMap' + '?pageNumber=' + page + '&flag=' + this.type
